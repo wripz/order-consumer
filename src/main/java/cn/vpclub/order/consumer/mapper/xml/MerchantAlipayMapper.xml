@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.vpclub.order.consumer.mapper.MerchantAlipayMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="cn.vpclub.order.consumer.entityProvider.MerchantAlipayProvider">
+		<id column="id" property="id" />
+		<result column="account_number" property="accountNumber" />
+		<result column="service_serial_number" property="serviceSerialNumber" />
+		<result column="merchant_order_no" property="merchantOrderNo" />
+		<result column="commodity_name" property="commodityName" />
+		<result column="occurrence_time" property="occurrenceTime" />
+		<result column="reciprocal_account_number" property="reciprocalAccountNumber" />
+		<result column="income" property="income" />
+		<result column="amount_paid" property="amountPaid" />
+		<result column="balance" property="balance" />
+		<result column="transaction_channel" property="transactionChannel" />
+		<result column="business_type" property="businessType" />
+		<result column="remark" property="remark" />
+		<result column="import_file_name" property="importFileName" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, account_number AS accountNumber, service_serial_number AS serviceSerialNumber, merchant_order_no AS merchantOrderNo, commodity_name AS commodityName, occurrence_time AS occurrenceTime, reciprocal_account_number AS reciprocalAccountNumber, income, amount_paid AS amountPaid, balance, transaction_channel AS transactionChannel, business_type AS businessType, remark, import_file_name AS importFileName
+    </sql>
+
+	<insert id="insertList" parameterType="cn.vpclub.order.consumer.entityProvider.MerchantAlipayProvider">
+		insert into merchant_alipay (id,account_number, service_serial_number, merchant_order_no, commodity_name , occurrence_time,
+		reciprocal_account_number, income, amount_paid, balance, transaction_channel, business_type, remark,
+		import_file_name
+		)
+		values
+		<foreach collection="list" item="item" separator =",">
+			(#{item.id,jdbcType=BIGINT}, #{item.accountNumber,jdbcType=VARCHAR},
+			#{item.serviceSerialNumber,jdbcType=VARCHAR}, #{item.merchantOrderNo,jdbcType=VARCHAR},
+			#{item.commodityName,jdbcType=VARCHAR}, #{item.occurrenceTime},
+			#{item.reciprocalAccountNumber,jdbcType=VARCHAR}, #{item.income},
+			#{item.amountPaid}, #{item.balance},
+			#{item.transactionChannel,jdbcType=VARCHAR}, #{item.businessType,jdbcType=VARCHAR},
+			#{item.remark,jdbcType=VARCHAR}, #{item.importFileName,jdbcType=VARCHAR}
+			)
+		</foreach>
+	</insert>
+
+</mapper>

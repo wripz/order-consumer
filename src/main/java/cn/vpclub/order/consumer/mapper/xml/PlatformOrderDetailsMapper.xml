@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.vpclub.order.consumer.mapper.PlatformOrderDetailsMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="cn.vpclub.order.consumer.entityProvider.PlatformOrderDetailsProvider">
+		<id column="id" property="id" />
+		<result column="downstream_order_no" property="downstreamOrderNo" />
+		<result column="system_order_no" property="systemOrderNo" />
+		<result column="merchant_code" property="merchantCode" />
+		<result column="transaction_amount" property="transactionAmount" />
+		<result column="cost" property="cost" />
+		<result column="platform_income" property="platformIncome" />
+		<result column="merchant_returned_money" property="merchantReturnedMoney" />
+		<result column="first_share_profit" property="firstShareProfit" />
+		<result column="submit_time" property="submitTime" />
+		<result column="succeed_time" property="succeedTime" />
+		<result column="channel_merchant_number" property="channelMerchantNumber" />
+		<result column="channel_id" property="channelId" />
+		<result column="channel_name" property="channelName" />
+		<result column="import_file_name" property="importFileName" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, downstream_order_no AS downstreamOrderNo, system_order_no AS systemOrderNo, merchant_code AS merchantCode, transaction_amount AS transactionAmount, cost, platform_income AS platformIncome, merchant_returned_money AS merchantReturnedMoney, first_share_profit AS firstShareProfit, submit_time AS submitTime, succeed_time AS succeedTime, channel_merchant_number AS channelMerchantNumber, channel_id AS channelId, channel_name AS channelName, import_file_name AS importFileName
+    </sql>
+
+	<insert id="insertList" parameterType="cn.vpclub.order.consumer.entityProvider.PlatformOrderDetailsProvider">
+		insert into platform_order_details (id,downstream_order_no, system_order_no, merchant_code, transaction_amount , cost,
+		platform_income, merchant_returned_money, first_share_profit, submit_time, succeed_time, channel_merchant_number, channel_id,
+		channel_name, import_file_name
+		)
+		values
+		<foreach collection="list" item="item" separator =",">
+			(#{item.id}, #{item.downstreamOrderNo},
+			#{item.systemOrderNo}, #{item.merchantCode},
+			#{item.transactionAmount}, #{item.cost},
+			#{item.platformIncome}, #{item.merchantReturnedMoney},
+			#{item.firstShareProfit}, #{item.submitTime},
+			#{item.succeedTime}, #{item.channelMerchantNumber},
+			#{item.channelId}, #{item.channelName},
+			#{item.importFileName}
+			)
+		</foreach>
+	</insert>
+
+</mapper>

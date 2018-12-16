@@ -1,0 +1,71 @@
+app:
+  project: order
+  name: order
+  role: consumer
+  descriptions: 订单
+  cluster-name: order
+  datasource:
+    name: moses_security_admin
+    host: mysql-${spring.profiles.active}
+    username: root
+    password: 0W4S+uPfcidMlt7xre1G9wquEZAv0WTV+IfZWVSxGyQ0rSz4q/vvyDPA3DCwW++13IqE7BaGwoRtamWr+OMdiw==
+    druid:
+      public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAONyNq50NfRekV6hpZDnFq3IBr1dVZH3uwmwUBAjBg6OriMp0WYFahdj+6vCAP5xg0LP6GPWc4tnfeHIgg6WW5kCAwEAAQ==
+
+
+spring:
+  http:
+    encoding.charset: UTF-8
+    encoding.enable: true
+    encoding.force: true
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+  aop:
+    proxy-target-class: true
+  profiles:
+    include:
+    - web # 必须引入 web
+    - swagger # API文档swagger
+    - locale # 国际化
+    - logging # 日志
+    - cors # 跨域
+#    - shiro #权限控制
+#    - hazelcast #缓存
+#    - kafka
+    - mybatisplus
+  transaction:
+    rollback-on-commit-failure: true
+
+mybatis:
+  typeAliasesPackage : "cn.vpclub.order.consumer.entityProvider"
+  #checkConfig-location : false
+  mapper-locations : "classpath:cn/vpclub/order/consumer/mapper/xml/*Mapper.xml"
+
+logging:
+  level:
+    org.springframework: INFO
+    cn.vpclub.spring.boot: INFO
+    cn.vpclub.order: INFO
+
+
+#undertow config optimize
+server:
+  context-path: "/"
+  undertow:
+    io-threads: 2
+    worker-threads: 200
+#
+#grpc:
+#  client:
+#    order-provider:
+#      enable-keep-alive: true
+#      keep-alive-delay: 5 # seconds
+cors:
+  mappings: /**
+  allowedOrigins:
+
+
+
+

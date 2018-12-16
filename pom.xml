@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.vpclub.order</groupId>
+    <artifactId>order-consumer</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>order-consumer</name>
+    <description>order-consumer </description>
+    <parent>
+        <groupId>cn.vpclub</groupId>
+        <artifactId>spring-boot-starters</artifactId>
+        <version>1.5.18-SNAPSHOT</version>
+        <!-- lookup parent from repository -->
+    </parent>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <moses-framework.version>1.0.14-SNAPSHOT</moses-framework.version>
+        <maven-archetype.version>2.4</maven-archetype.version>
+        <project-id>order-consumer</project-id>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>cn.vpclub</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+
+        <!-- spring-boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-actuator</artifactId>-->
+        <!--</dependency>-->
+
+        <!-- mybatis -->
+        <dependency>
+            <groupId>cn.vpclub</groupId>
+            <artifactId>spring-boot-starter-mybatisplus</artifactId>
+        </dependency>
+
+        <!-- grpc -->
+        <dependency>
+            <groupId>cn.vpclub</groupId>
+            <artifactId>spring-boot-starter-grpc</artifactId>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>cn.vpclub</groupId>-->
+        <!--<artifactId>spring-boot-starter-hazelcast</artifactId>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>cn.vpclub</groupId>
+            <artifactId>spring-boot-starter-cors</artifactId>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>cn.vpclub.moses</groupId>-->
+        <!--<artifactId>sms</artifactId>-->
+        <!--<version>${moses-sms.version}</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>cn.vpclub</groupId>
+            <artifactId>spring-boot-starter-hazelcast</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.vpclub</groupId>
+            <artifactId>moses-core</artifactId>
+            <version>${moses-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.vpclub</groupId>
+            <artifactId>moses-utils</artifactId>
+            <version>${moses-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.vpclub</groupId>
+            <artifactId>moses-web</artifactId>
+            <version>${moses-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.vpclub</groupId>
+            <artifactId>moses-data</artifactId>
+            <version>${moses-framework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.vpclub</groupId>
+            <artifactId>moses-tests</artifactId>
+            <version>${moses-framework.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>cn.vpclub</groupId>
+                    <artifactId>spring-boot-starter-mybatis</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Swagger -->
+        <dependency>
+            <groupId>cn.vpclub</groupId>
+            <artifactId>spring-boot-starter-swagger</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15 -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15</artifactId>
+            <version>1.46</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.53</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>cn.vpclub.order.consumer.ConsumerApplication</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.xolstice.maven.plugins</groupId>
+                <artifactId>protobuf-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>${maven-archetype.version}</version>
+            </plugin>
+
+
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <!--指定资源的位置-->
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
+    </build>
+
+</project>

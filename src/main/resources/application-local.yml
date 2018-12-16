@@ -1,0 +1,34 @@
+app:
+  datasource:
+    name: order
+    host: 127.0.0.1
+    username: root
+    password: QxXkhZ1QNY5WnBh0pJVYqdMpZ3AVPHaUvAeL3H7aG1hd0WJ2SFkdbi8rM/sYM7QfXqmiULPez0qqskHSvRnWog==
+    druid:
+      public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMBmAf4rl7uD4PtnwmBcnpdB5xzcFO6aAnAQPSWzdbhCQJQ891XTTths+nvmrgjBUTmeBvyLxDdKcKJcddJ4qzkCAwEAAQ==
+
+
+
+
+logging:
+  level:
+    org.springframework.web: INFO
+    cn.vpclub.order: INFO
+    org.springframework: INFO
+    cn.vpclub.spring.boot: INFO
+    cn.vpclub.moses: INFO
+
+
+
+#undertow config optimize
+server:
+  port: 8081
+#grpc:
+#  client:
+#    order-provider:
+#      server-host: localhost
+#      enable-keep-alive: true
+#      keep-alive-delay: 5 # seconds
+cors:
+  mappings: /**
+  allowedOrigins:
